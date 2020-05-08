@@ -2,6 +2,8 @@ package ru.netology.manager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.netology.comparator.DateComparator;
+import ru.netology.comparator.UpdateComparator;
 import ru.netology.issue.*;
 import ru.netology.user.Assignee;
 import ru.netology.user.Author;
@@ -54,7 +56,7 @@ class ManagerTest {
 
     @Test
     void shouldFilterByAssignee() {
-        List<Issue> actual = issueManager.filterByAssignee(new Assignee(10, "Anna", "Petrova"));
+        List<Issue> actual = issueManager.filterByAssignee(new Assignee(1, "Anna", "Petrova"));
         List<Issue> expected = new ArrayList<>();
         expected.add(issue5);
         assertEquals(expected, actual);
@@ -82,7 +84,8 @@ class ManagerTest {
 
     @Test
     void shouldSortAscendingTime() {
-        List<Issue> actual = issueManager.sortAscendingTime();
+        DateComparator comparator = new DateComparator(false);
+        List<Issue> actual = issueManager.sortByTime(comparator);
         List<Issue> expected = new ArrayList<>();
         expected.add(issue3);
         expected.add(issue2);
@@ -95,7 +98,8 @@ class ManagerTest {
 
     @Test
     void shouldSortDescendingTime() {
-        List<Issue> actual = issueManager.sortDescendingTime();
+        DateComparator comparator = new DateComparator(true);
+        List<Issue> actual = issueManager.sortByTime(comparator);
         List<Issue> expected = new ArrayList<>();
         expected.add(issue6);
         expected.add(issue5);
@@ -108,7 +112,8 @@ class ManagerTest {
 
     @Test
     void shouldSortDescendingUpdate() {
-        List<Issue> actual = issueManager.sortDescendingUpdate();
+        UpdateComparator comparator = new UpdateComparator(true);
+        List<Issue> actual = issueManager.sortByUpdate(comparator);
         List<Issue> expected = new ArrayList<>();
         expected.add(issue6);
         expected.add(issue5);
@@ -121,7 +126,8 @@ class ManagerTest {
 
     @Test
     void shouldSortAscendingUpdate() {
-        List<Issue> actual = issueManager.sortAscendingUpdate();
+        UpdateComparator comparator = new UpdateComparator(false);
+        List<Issue> actual = issueManager.sortByUpdate(comparator);
         List<Issue> expected = new ArrayList<>();
         expected.add(issue3);
         expected.add(issue2);

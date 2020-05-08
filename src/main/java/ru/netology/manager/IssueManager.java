@@ -70,36 +70,20 @@ public class IssueManager {
     public List<Issue> filterByLabel(Label label) {
         List<Issue> temp = new ArrayList<>();
         for (Issue issue : repository.getAll()) {
-            if (issue.getLabel().equals(label)) {
+            if (issue.getLabel().contains(label)) {
                 temp.add(issue);
             }
         }
         return temp;
     }
 
-    public List<Issue> sortAscendingTime() {
-        DateComparator comparator = new DateComparator(false);
+    public List<Issue> sortByTime(DateComparator comparator) {
         List<Issue> issuesAll = repository.getAll();
         issuesAll.sort(comparator);
         return issuesAll;
     }
 
-    public List<Issue> sortDescendingTime() {
-        DateComparator comparator = new DateComparator(true);
-        List<Issue> issuesAll = repository.getAll();
-        issuesAll.sort(comparator);
-        return issuesAll;
-    }
-
-    public List<Issue> sortDescendingUpdate() {
-        UpdateComparator comparator = new UpdateComparator(true);
-        List<Issue> issuesAll = repository.getAll();
-        issuesAll.sort(comparator);
-        return issuesAll;
-    }
-
-    public List<Issue> sortAscendingUpdate() {
-        UpdateComparator comparator = new UpdateComparator(false);
+    public List<Issue> sortByUpdate(UpdateComparator comparator) {
         List<Issue> issuesAll = repository.getAll();
         issuesAll.sort(comparator);
         return issuesAll;
