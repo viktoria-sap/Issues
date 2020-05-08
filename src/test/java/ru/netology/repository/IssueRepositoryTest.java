@@ -60,6 +60,21 @@ class IssueRepositoryTest {
         repository.deleteById(6);
         assertNull(repository.findById(6));
     }
+
+    @Test
+    void deleteByIdIfNotExist() {
+        repository.deleteById(8);
+        List<Issue> actual = repository.getAll();
+        List<Issue> expected = new ArrayList<>();
+        expected.add(issue1);
+        expected.add(issue2);
+        expected.add(issue3);
+        expected.add(issue4);
+        expected.add(issue5);
+        expected.add(issue6);
+        assertEquals(expected, actual);
+    }
+
 }
 
 
