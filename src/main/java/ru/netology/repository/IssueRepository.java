@@ -11,9 +11,6 @@ import static ru.netology.issue.Status.CLOSED;
 public class IssueRepository {
     private  List<Issue> issues = new ArrayList<>();
 
-    public IssueRepository() {
-    }
-
     public List<Issue> getAll() {
         return issues;
     }

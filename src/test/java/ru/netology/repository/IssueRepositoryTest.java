@@ -4,8 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.issue.*;
 import ru.netology.manager.IssueManager;
-import ru.netology.someone.Assignee;
-import ru.netology.someone.Author;
+import ru.netology.user.Assignee;
+import ru.netology.user.Author;
 
 import java.util.*;
 

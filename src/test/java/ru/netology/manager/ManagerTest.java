@@ -3,9 +3,8 @@ package ru.netology.manager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.issue.*;
-import ru.netology.manager.IssueManager;
-import ru.netology.someone.Assignee;
-import ru.netology.someone.Author;
+import ru.netology.user.Assignee;
+import ru.netology.user.Author;
 import ru.netology.repository.IssueRepository;
 
 import java.util.*;
@@ -48,14 +47,14 @@ class ManagerTest {
     void shouldFilterByLabel() {
         List<Issue> actual = issueManager.filterByLabel(Label.WANTFIX);
         int expectedIssueId = 5;
-        int actualIssueId = actual.get(4).getId();
+        int actualIssueId = actual.get(0).getId();
         assertEquals(expectedIssueId, actualIssueId);
     }
 
 
     @Test
     void shouldFilterByAssignee() {
-        List<Issue> actual = issueManager.filterByAssignee("Petrova");
+        List<Issue> actual = issueManager.filterByAssignee(new Assignee(10, "Anna", "Petrova"));
         List<Issue> expected = new ArrayList<>();
         expected.add(issue5);
         assertEquals(expected, actual);

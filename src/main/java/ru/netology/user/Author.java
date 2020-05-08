@@ -1,13 +1,13 @@
-package ru.netology.someone;
+package ru.netology.user;
 
 import java.util.Objects;
 
-public class Person {
+public class Author {
     private int id;
     private String name;
     private String surname;
 
-    public Person(int id, String name, String surname) {
+    public Author(int id, String name, String surname) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -36,10 +36,10 @@ public class Person {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return id == person.id &&
-                Objects.equals(name, person.name) &&
-                Objects.equals(surname, person.surname);
+        Author author = (Author) o;
+        return id == author.id &&
+                Objects.equals(name, author.name) &&
+                Objects.equals(surname, author.surname);
     }
 
     @Override

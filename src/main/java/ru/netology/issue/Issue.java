@@ -2,8 +2,8 @@ package ru.netology.issue;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import ru.netology.someone.Assignee;
-import ru.netology.someone.Author;
+import ru.netology.user.Assignee;
+import ru.netology.user.Author;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -44,16 +44,6 @@ public class Issue {
         this.status = status;
         this.createDate = createDate;
         this.updateDate = updateDate;
-    }
-
-    public Issue(int id, String name, Author author, Label label, Assignee assignee, Status status, Date createDate) {
-        this.id = id;
-        this.name = name;
-        this.author = author;
-        this.label.add(label);
-        this.assigneesSet.add(assignee);
-        this.status = status;
-        this.createDate = createDate;
     }
 
     public void setStatus(Status status) {
